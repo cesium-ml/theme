@@ -109,20 +109,21 @@
           </ul>
 
           <section class="top-bar-section">
-            <ul class="left">
-              {% for cat, articles in categories %}
-                <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-              {% endfor %}
+            <ul class="right">
+              <li class="divider"></li>
+              <li class="has-dropdown">
+                <a href="#" class="">Learn</a>
+                <ul class="dropdown">
+                  <li><a href="#">About Cesium</a></li>
+                  <li><a href="#">Tutorials</a></li>
+                </ul>
+              </li>
+              <li class="divider"></li>
+              <li class="has-form">
+                <a href="#"
+                   class="button">Try it in your browser</a>
+              </li>
             </ul>
-      <ul class="right">                                     
-           {% for pg in PAGES | sort(attribute='index') %}                            
-         {% if 'http://' in pg.url -%}                              
-             <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>                             
-         {% else %}····                                       
-             <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>            
-         {% endif %}                                    
-           {% endfor %}                                       
-      </ul>  
           </section>
         </nav>
 
@@ -141,6 +142,8 @@
               {% block content %}{% endblock %}
             </div>
             <!-- End Main Content -->
+
+            {% block sidebar %}
             <!-- Sidebar -->
             <aside class="medium-3 hide-for-small-only columns">
               <div class="panel">
@@ -183,6 +186,7 @@
                 </ul>
               </div>
             </aside>
+            {% endblock %}
             <!-- End Sidebar -->
           </div>
 

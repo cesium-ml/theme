@@ -110,6 +110,10 @@
           </ul>
 
           <section class="top-bar-section">
+            <ul class="left">
+              <li><a href="https://github.com/cesium-ml/cesium">Code</a></li>
+              <li><a href="{{ SITEURL }}">Blog</li>
+            </ul>
             <ul class="right">
               <li class="divider"></li>
               <li class="has-dropdown">
@@ -157,10 +161,10 @@
               </div>
 
               <div class="panel">
-                <h5>Tags</h5>
+                <h5>Categories</h5>
                 <ul class="tag-cloud">
-                  {% for tag in tag_cloud %}
-                  <li><a href="/tag/{{ tag.0|lower|replace(' ', '-') }}.html" class="tag-{{ tag.1 }}">{{ tag.0 }}</a></li>
+                  {% for cat, articles in categories %}
+                  <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
                   {% endfor %}
                 </ul>
               </div>
@@ -186,6 +190,7 @@
                   {% endfor %}
                 </ul>
               </div>
+
             </aside>
             {% endblock %}
             <!-- End Sidebar -->
